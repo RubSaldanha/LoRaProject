@@ -33,4 +33,4 @@ os.mount(sd, '/sd')
 
 s = socket.socket(AF_LORA, SOCK_RAW)
 s.setblocking(True)
-s.settimeout(240)
+s.settimeout(30)

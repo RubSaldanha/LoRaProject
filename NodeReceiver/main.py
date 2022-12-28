@@ -26,18 +26,27 @@ pycom.rgbled(0xf7f701)
 state = INITIAL_STATE
 
 packet = b''
+ini_time = time.time()
+data = open("/sd/data.txt","a")
 while True:
-
+    i = 0
+    data.write("\nNew image\n")
     while state == INITIAL_STATE:
         try:
-            packet = s.recv(240)
+            packet = s.recv(248)
             fname = str(packet)[8:] # first bytes are saying "Begin" supposedly
-            print(fname)
+            #print(fname)
+            data.write("packet " + str(i) + " time: 0\n")
+            print("packet " + str(i) + " time: 0")
+            i = 1
+            ini_time = time.time()
             show_packet_success()
             state = TRANSFER_STATE
         except Exception as e:
             print(e)
+            data.close()
             error_routine()
+
     start_time = time.time()
 
 
@@ -46,27 +55,34 @@ while True:
 
     fname = [char for char in fname if char.isalpha() or char == "."]
     fname ="".join(fname)
-    fname = fname
-    ini_time = time.time()
-    i = 0
-    with open ('/sd/' + fname + '_rcv', "wb") as f:
+    last_cont = 0
+    #print(fname)
+    with open ('/sd/rcv_' + fname, "wb") as f:
         while state == TRANSFER_STATE:
             try:
-                packet = s.recv(240)
-                print("packet " + str(i) + " time: " + str(ini_time-time.time()))
+                iden_cont = int.from_bytes(s.recv(1), "big")
+                packet = s.recv(252)
+                data.write("packet " + str(iden_cont) + " time: " + str(time.time()-ini_time) + "\n")
+                print("packet " + str(iden_cont) + " time: " + str(time.time()-ini_time))
                 ini_time = time.time()
                 s.send(b'ACK')
                 show_packet_success()
-                i = i +1
+                i += 1
                 #print(packet)
 
                 if b'End' in packet:
-                    print("Total time of execution: ", time.time()-start_time)
+                    #print(packet)
+                    data.write("Total time of execution: " + str(time.time()-start_time) + "\n")
+                    print("Total time of execution: " + str(time.time()-start_time))
                     state = INITIAL_STATE
                     pycom.rgbled(0xf7f701)
                 else:
-                    f.write(packet)
+                    if iden_cont == (last_cont+1):
+                        f.write(packet)
+                        #print(packet)
+                        last_cont = iden_cont
 
             except Exception as e:
                 print(e)
+                data.close()
                 error_routine()
