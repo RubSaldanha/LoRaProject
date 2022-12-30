@@ -30,14 +30,14 @@ ini_time = time.time()
 data = open("/sd/data.txt","a")
 while True:
     i = 0
-    data.write("\nNew image\n")
     while state == INITIAL_STATE:
         try:
-            packet = s.recv(248)
+            packet = s.recv(252)
             fname = str(packet)[8:] # first bytes are saying "Begin" supposedly
             #print(fname)
+            data.write("\n" + fname + "\n")
             data.write("packet " + str(i) + " time: 0\n")
-            print("packet " + str(i) + " time: 0")
+            #print("packet " + str(i) + " time: 0")
             i = 1
             ini_time = time.time()
             show_packet_success()
@@ -53,10 +53,10 @@ while True:
     if state == END_STATE:
         error_routine()
 
-    fname = [char for char in fname if char.isalpha() or char == "."]
+    fname = [char for char in fname if char.isalpha() or char == "." or char.isdigit()]
     fname ="".join(fname)
+
     last_cont = 0
-    #print(fname)
     with open ('/sd/rcv_' + fname, "wb") as f:
         while state == TRANSFER_STATE:
             try:

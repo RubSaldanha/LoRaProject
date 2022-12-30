@@ -1,3 +1,6 @@
+
+BLOCKSIZE=250 # read atmost 240 bytes
+LIMIT_TIMEOUTS = 3
 def error_routine():
     pycom.rgbled(0xff0000) # Red led
     time.sleep(0.1)
@@ -8,11 +11,6 @@ def error_routine():
 def show_packet_success():
     pycom.rgbled(0x00ff00) # green led
 
-imgs = ["/sd/testimage.jpg", "/sd/testimage1.jpg", "/sd/testimage3.jpg"]
-BLOCKSIZE=240 # read atmost 240 bytes
-LIMIT_TIMEOUTS = 3
-
-
 def read_blocks(figure):
     timeouts = 0
     lost_packets = 0
@@ -20,7 +18,6 @@ def read_blocks(figure):
     fd = open(figure, "rb")
     s.send(bytes('Begin {}'.format(figure.split("/")[-1]) , 'utf-8'))
     time.sleep(5)
-    #print(s)
     bytes_read = 0      # overall bytes read (debug)
     eofflag = 0         # 1 means end of file
     bytes_read_iter = 0 # byte read in the outermost while loop
@@ -32,7 +29,7 @@ def read_blocks(figure):
             timeouts = 0
 
             if buffer_in == b'':
-                print("EOF1")
+                #print("EOF1")
 
                 buffer_in = int(0).to_bytes(1, 'big') + b'End'
                 s.send(buffer_in)
@@ -40,7 +37,7 @@ def read_blocks(figure):
             else:
                 buffer_in = i.to_bytes(1, 'big') + buffer_in
                 i += 1
-                print(buffer_in)
+                #print(buffer_in)
 
             bytes_read_iter = len(buffer_in)
             #print(bytes_read_iter)
@@ -59,36 +56,38 @@ def read_blocks(figure):
             resend_packet = 0
             show_packet_success()
         except Exception as e:
-            print("->")
             print(e)
-            print("ABC")
             resend_packet = 1
-            print("ddd")
             timeouts += 1
-            lost_packets += 1
+            lost_packets = lost_packets +1
             error_routine()
-        if timeouts == LIMIT_TIMEOUTS:
-            return
 
-        print()
+        if timeouts == LIMIT_TIMEOUTS:
+            print("lost packets:" + str(lost_packets))
+            sys.exit(-1)
+
+        #print()
         bytes_read += len(buffer_in)
         time.sleep(5)
         if eofflag:
-            print("EOF2")
+            #print("EOF2")
             #s.send('End')S
             eof_msg = int(0).to_bytes(1, 'big') + b'End'
             s.send(eof_msg)
             break
 
     fd.close()
-    print(bytes_read)
+    return lost_packets
+    #print(bytes_read)
 
+imgs = ["/sd/testimage.jpg","/sd/testimage1.jpg", "/sd/testimage2.jpg","/sd/testimage3.jpg"]
 for img in imgs:
-    read_blocks(img)
+    print("Image " + img)
+    lost_packets = read_blocks(img)
     pycom.rgbled(0x000000)
     time.sleep(0.4)
     print("lost packets:" + str(lost_packets))
-    lost_packets = 0
+
 #read_blocks("/sd/image1.jpg")
 #if __name__ == "__main__":
 #    read_blocks("testimage.jpg")

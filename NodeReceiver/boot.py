@@ -13,16 +13,16 @@ import time
 
 pycom.heartbeat(False)
 
-#lora = LoRa(mode = LoRa.LORA, region=LoRa.EU868, bandwidth=LoRa.BW_125KHZ, sf=7, preamble=8)
-lora = LoRa(mode = LoRa.LORA, region=LoRa.EU868, bandwidth=LoRa.BW_500KHZ, sf=10, preamble=8)
 #lora = LoRa(mode = LoRa.LORA, region=LoRa.EU868, bandwidth=LoRa.BW_125KHZ, sf=10, preamble=8)
+#lora = LoRa(mode = LoRa.LORA, region=LoRa.EU868, bandwidth=LoRa.BW_500KHZ, sf=10, preamble=8)
+#lora = LoRa(mode = LoRa.LORA, region=LoRa.EU868, bandwidth=LoRa.BW_125KHZ, sf=7, preamble=8)
 #lora = LoRa(mode = LoRa.LORA, region=LoRa.EU868, bandwidth=LoRa.BW_500KHZ, sf=7, preamble=8)
+lora = LoRa(mode = LoRa.LORA, tx_power = 3,region=LoRa.EU868, bandwidth=LoRa.BW_500KHZ)
 
 #lora = LoRa(mode = LoRa.LORA, region=LoRa.EU868, bandwidth=LoRa.BW_125KHZ, sf=7, preamble=8)
 #lora = LoRa(mode = LoRa.LORA, region=LoRa.EU868, bandwidth=LoRa.BW_125KHZ, sf=7, preamble=8)
 #lora = LoRa(mode = LoRa.LORA, region=LoRa.EU868, bandwidth=LoRa.BW_125KHZ, sf=7, preamble=8)
 #lora = LoRa(mode = LoRa.LORA, region=LoRa.EU868, bandwidth=LoRa.BW_125KHZ, sf=7, preamble=8)
-
 
 if '/sd' in os.listdir('/'):
     os.umount('/sd')
