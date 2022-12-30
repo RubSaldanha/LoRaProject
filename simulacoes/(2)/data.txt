@@ -1,0 +1,140 @@
+testimage.jpg'
+packet 0 time: 0
+packet 1 time: 5
+packet 2 time: 5
+packet 3 time: 5
+packet 4 time: 5
+packet 5 time: 6
+packet 6 time: 5
+packet 7 time: 5
+packet 0 time: 5
+Total time of execution: 41
+lost packets: 0
+
+testimage1.jpg'
+packet 0 time: 0
+packet 1 time: 5
+packet 2 time: 5
+packet 3 time: 5
+packet 4 time: 5
+packet 5 time: 5
+packet 6 time: 5
+packet 7 time: 5
+packet 8 time: 5
+packet 9 time: 5
+packet 10 time: 5
+packet 11 time: 5
+packet 12 time: 6
+packet 13 time: 5
+packet 14 time: 5
+packet 15 time: 5
+packet 16 time: 5
+packet 17 time: 5
+packet 18 time: 5
+packet 0 time: 5
+Total time of execution: 96
+lost packets: 0
+
+testimage2.jpg'
+packet 0 time: 0
+packet 1 time: 5
+packet 2 time: 5
+packet 3 time: 5
+packet 4 time: 5
+packet 5 time: 5
+packet 6 time: 5
+packet 7 time: 5
+packet 8 time: 5
+packet 9 time: 5
+packet 10 time: 6
+packet 11 time: 5
+packet 12 time: 5
+packet 13 time: 5
+packet 14 time: 5
+packet 15 time: 5
+packet 16 time: 5
+packet 17 time: 5
+packet 18 time: 5
+packet 19 time: 5
+packet 20 time: 6
+packet 21 time: 5
+packet 22 time: 5
+packet 23 time: 5
+packet 24 time: 5
+packet 25 time: 5
+packet 26 time: 5
+packet 27 time: 5
+packet 28 time: 5
+packet 29 time: 5
+packet 30 time: 6
+packet 31 time: 5
+packet 32 time: 5
+packet 33 time: 5
+packet 34 time: 5
+packet 35 time: 5
+packet 36 time: 5
+packet 37 time: 5
+packet 38 time: 5
+packet 39 time: 5
+packet 5 time: 3
+packet 40 time: 3
+packet 41 time: 5
+packet 42 time: 5
+packet 43 time: 5
+packet 44 time: 5
+packet 45 time: 5
+packet 46 time: 5
+packet 47 time: 5
+packet 48 time: 5
+packet 49 time: 5
+packet 50 time: 5
+packet 51 time: 5
+packet 52 time: 5
+packet 53 time: 5
+packet 54 time: 5
+packet 55 time: 5
+packet 56 time: 5
+packet 57 time: 5
+packet 58 time: 5
+packet 59 time: 6
+packet 60 time: 5
+packet 61 time: 5
+packet 62 time: 5
+packet 63 time: 5
+packet 64 time: 5
+packet 65 time: 5
+packet 66 time: 5
+packet 134 time: 1
+packet 67 time: 4
+packet 68 time: 5
+packet 69 time: 6
+packet 70 time: 5
+packet 71 time: 5
+packet 72 time: 5
+packet 73 time: 5
+packet 74 time: 5
+packet 75 time: 5
+packet 76 time: 5
+packet 77 time: 5
+packet 78 time: 5
+packet 79 time: 6
+packet 80 time: 5
+packet 81 time: 5
+packet 82 time: 5
+packet 83 time: 5
+packet 0 time: 5
+Total time of execution: 428
+lost packets: 0
+
+testimage3.jpg'
+packet 0 time: 0
+packet 1 time: 5
+packet 2 time: 5
+packet 3 time: 5
+packet 4 time: 5
+packet 5 time: 5
+packet 6 time: 5
+packet 7 time: 5
+packet 0 time: 5
+Total time of execution: 40
+lost packets: 0

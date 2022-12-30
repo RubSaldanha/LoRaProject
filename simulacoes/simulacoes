@@ -2,3 +2,6 @@ Muito Pouca distância
 (1) - LoRa(mode = LoRa.LORA, tx_power = 3,region=LoRa.EU868, bandwidth=LoRa.BW_500KHZ)
 (2) - LoRa(mode = LoRa.LORA, tx_power = 8,region=LoRa.EU868, bandwidth=LoRa.BW_500KHZ)
 (3) - LoRa(mode = LoRa.LORA, tx_power = 14,region=LoRa.EU868, bandwidth=LoRa.BW_500KHZ)
+(4) - LoRa(mode = LoRa.LORA, tx_power = 3,region=LoRa.EU868, bandwidth=LoRa.BW_125KHZ)
+(5) - LoRa(mode = LoRa.LORA, tx_power = 8,region=LoRa.EU868, bandwidth=LoRa.BW_125KHZ)
+(6) - LoRa(mode = LoRa.LORA, tx_power = 14,region=LoRa.EU868, bandwidth=LoRa.BW_125KHZ)
