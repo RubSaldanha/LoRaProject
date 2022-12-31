@@ -38,6 +38,7 @@ while True:
             data.write("\n" + fname + "\n")
             data.write("packet " + str(i) + " time: 0\n")
             #print("packet " + str(i) + " time: 0")
+            s.send(b'ACK')
             i = 1
             ini_time = time.time()
             show_packet_success()

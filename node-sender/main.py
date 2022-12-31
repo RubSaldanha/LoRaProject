@@ -17,6 +17,16 @@ def read_blocks(figure):
     pycom.rgbled(0xf7f701)
     fd = open(figure, "rb")
     s.send(bytes('Begin {}'.format(figure.split("/")[-1]) , 'utf-8'))
+
+    try:
+        s.recv(10)
+        show_packet_success()
+    except Exception as e:
+        print(e)
+        timeouts += 1
+        lost_packets = lost_packets +1
+        error_routine()
+
     time.sleep(5)
     bytes_read = 0      # overall bytes read (debug)
     eofflag = 0         # 1 means end of file
