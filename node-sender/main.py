@@ -26,6 +26,7 @@ def read_blocks(figure):
         timeouts += 1
         lost_packets = lost_packets +1
         error_routine()
+        print("Error sending first packet of image")
 
     time.sleep(5)
     bytes_read = 0      # overall bytes read (debug)
@@ -43,7 +44,18 @@ def read_blocks(figure):
 
                 buffer_in = int(0).to_bytes(1, 'big') + b'End'
                 s.send(buffer_in)
-                break
+                try:
+                    s.recv(10)
+                    resend_packet = 0
+                    show_packet_success()
+                    break
+                except Exception as e:
+                    print(e)
+                    resend_packet = 1
+                    timeouts += 1
+                    lost_packets = lost_packets +1
+                    error_routine()
+
             else:
                 buffer_in = i.to_bytes(1, 'big') + buffer_in
                 i += 1
@@ -59,6 +71,7 @@ def read_blocks(figure):
 
                 if len(buffer_in) - bytes_read_iter == 0: # nothing more was read therefore EOF
                     eofflag = 1
+
         #print(buffer_in)
         s.send(buffer_in)
         try:
@@ -72,19 +85,29 @@ def read_blocks(figure):
             lost_packets = lost_packets +1
             error_routine()
 
-        if timeouts == LIMIT_TIMEOUTS:
-            print("lost packets:" + str(lost_packets))
-            sys.exit(-1)
-
-        #print()
+        
         bytes_read += len(buffer_in)
         time.sleep(5)
         if eofflag:
             #print("EOF2")
             #s.send('End')S
-            eof_msg = int(0).to_bytes(1, 'big') + b'End'
-            s.send(eof_msg)
-            break
+            buffer_in = int(0).to_bytes(1, 'big') + b'End'
+            s.send(buffer_in)
+            try:
+                s.recv(10)
+                resend_packet = 0
+                show_packet_success()
+                break
+            except Exception as e:
+                print(e)
+                resend_packet = 1
+                timeouts += 1
+                lost_packets = lost_packets +1
+                error_routine()
+
+        if timeouts == LIMIT_TIMEOUTS:
+            print("lost packets:" + str(lost_packets))
+            sys.exit(-1)
 
     fd.close()
     return lost_packets
