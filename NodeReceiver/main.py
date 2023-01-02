@@ -26,19 +26,23 @@ pycom.rgbled(0xf7f701)
 state = INITIAL_STATE
 
 packet = b''
-ini_time = time.time()
-data = open("/sd/data.txt","a")
+
+data = open("/sd/data_20-125.txt","a")
 while True:
+    ini_time = time.time()
     i = 0
     while state == INITIAL_STATE:
+        ini_time = time.time()
         try:
             packet = s.recv(252)
+            if(packet == b''):
+                break;
             fname = str(packet)[8:] # first bytes are saying "Begin" supposedly
-            #print(fname)
             data.write("\n" + fname + "\n")
             data.write("packet " + str(i) + " time: 0\n")
-            #print("packet " + str(i) + " time: 0")
             s.send(b'ACK')
+            show_packet_success()
+            #print("packet " + str(i) + " time: 0")
             i = 1
             ini_time = time.time()
             show_packet_success()
@@ -56,9 +60,9 @@ while True:
 
     fname = [char for char in fname if char.isalpha() or char == "." or char.isdigit()]
     fname ="".join(fname)
-
+    print(fname)
     last_cont = 0
-    with open ('/sd/rcv_' + fname, "wb") as f:
+    with open ('/sd/16-125_rcv_' + fname, "wb") as f:
         while state == TRANSFER_STATE:
             try:
                 iden_cont = int.from_bytes(s.recv(1), "big")
