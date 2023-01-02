@@ -1,9 +1,9 @@
 
 BLOCKSIZE=250 # read atmost 240 bytes
-LIMIT_TIMEOUTS = 5
+LIMIT_TIMEOUTS = 3
 lost_packets = 0
 timeouts = 0
-data = open("/sd/lost_packets_16-125.txt","a")
+data = open("/sd/lost_packets_20-500.txt","a")
 data.write("\n New Test \n")
 def error_routine():
     pycom.rgbled(0xff0000) # Red led

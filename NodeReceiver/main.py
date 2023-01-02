@@ -27,7 +27,7 @@ state = INITIAL_STATE
 
 packet = b''
 
-data = open("/sd/data_20-125.txt","a")
+data = open("/sd/data_16-500.txt","a")
 while True:
     ini_time = time.time()
     i = 0
@@ -62,7 +62,7 @@ while True:
     fname ="".join(fname)
     print(fname)
     last_cont = 0
-    with open ('/sd/16-125_rcv_' + fname, "wb") as f:
+    with open ('/sd/16-500_rcv_' + fname, "wb") as f:
         while state == TRANSFER_STATE:
             try:
                 iden_cont = int.from_bytes(s.recv(1), "big")

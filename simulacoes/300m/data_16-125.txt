@@ -1,0 +1,7 @@
+
+testimage.jpg'
+packet 0 time: 0
+packet 66 time: 35
+packet 1 time: 11
+packet 2 time: 41
+packet 2 time: 35
