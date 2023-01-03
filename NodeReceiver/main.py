@@ -91,3 +91,5 @@ while True:
                 print(e)
                 data.close()
                 error_routine()
+                f.close()
+    f.close()
