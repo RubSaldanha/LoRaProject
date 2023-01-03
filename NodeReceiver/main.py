@@ -92,4 +92,4 @@ while True:
                 data.close()
                 error_routine()
                 f.close()
-    f.close()
+        f.close()
