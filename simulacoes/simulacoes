@@ -32,7 +32,7 @@ Distancia 300 m
 (2) - LoRa(mode = LoRa.LORA, tx_power = 8,region=LoRa.EU868, bandwidth=LoRa.BW_500KHZ) --Não funciona
 (3) - LoRa(mode = LoRa.LORA, tx_power = 14,region=LoRa.EU868, bandwidth=LoRa.BW_500KHZ) --Perde muitos valores
 (4) - LoRa(mode = LoRa.LORA, tx_power = 20,region=LoRa.EU868, bandwidth=LoRa.BW_500KHZ) --deu
-(5) - LoRa(mode = LoRa.LORA, tx_power = 3,region=LoRa.EU868, bandwidth=LoRa.BW_125KHZ) --achei que nao valia a pena testar
-(6) - LoRa(mode = LoRa.LORA, tx_power = 8,region=LoRa.EU868, bandwidth=LoRa.BW_125KHZ) --achei que n valia a pena testar
-(7) - LoRa(mode = LoRa.LORA, tx_power = 14,region=LoRa.EU868, bandwidth=LoRa.BW_125KHZ) --achei que n valia a pena testar
+(5) - LoRa(mode = LoRa.LORA, tx_power = 3,region=LoRa.EU868, bandwidth=LoRa.BW_125KHZ) --
+(6) - LoRa(mode = LoRa.LORA, tx_power = 8,region=LoRa.EU868, bandwidth=LoRa.BW_125KHZ) --
+(7) - LoRa(mode = LoRa.LORA, tx_power = 14,region=LoRa.EU868, bandwidth=LoRa.BW_125KHZ) --
 (8) - LoRa(mode = LoRa.LORA, tx_power = 20,region=LoRa.EU868, bandwidth=LoRa.BW_125KHZ)  --deu
